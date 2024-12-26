@@ -1,6 +1,9 @@
 const express = require("express");
-const router = express.Router();
 
+const passport = require('passport')
+const passportServices = require('../services/passport.js')
+const protectedRoute = passport.authenticate('jwt', {session: false})
+const router = express.Router();
 const User = require('../models/users.js');
 
 const getUser = async (req, res, next) => {
@@ -18,7 +21,7 @@ const getUser = async (req, res, next) => {
 }
 
 
-router.get('/', async (req, res) => {
+router.get('/', protectedRoute, async (req, res) => {
     try {
         const users = await User.find()
         res.json(users)

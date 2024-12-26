@@ -1,6 +1,6 @@
 const User = require('../models/users')
-
 const jwt = require('jwt-simple')
+const config = require('../config')
 
 const tokenForUser = user =>{
     const timestamp = new Date().getTime();
@@ -8,6 +8,11 @@ const tokenForUser = user =>{
         sub: user.id,
         iat: timestamp
     }, config.secret)
+}
+
+exports.signin = (req, res, next) => {
+    const user = req.user
+    res.send({token: tokenForUser(user), user_id: user._id})
 }
 
 exports.signup = (req, res, next) => {
