@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import { env } from 'process';
 require('dotenv').config()
 
-const CLIENT_ID = process.env.REACT_APP_CLIENT_ID
-const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET
+// const CLIENT_ID = process.env.REACT_APP_CLIENT_ID
+// const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET
 
 
 
